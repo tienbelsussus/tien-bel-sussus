@@ -1,34 +1,45 @@
-from flask import Flask, jsonify
+from flask import Flask
+import json
 
 app = Flask(__name__)
 
+airports = {
+    "LFLL": {
+        "name": "Lyon Saint-Exupery Airport",
+        "city": "Lyon",
+        "country": "FR"
+    },
+    "EGLL": {
+        "name": "Heathrow Airport",
+        "city": "London",
+        "country": "GB"
+    },
+    "EFHK": {
+        "name": "Helsinki Airport",
+        "city": "Helsinki",
+        "country": "FI"
+    }
+}
 
-# hàm tìm airport theo ICAO
-def find_airport(icao):
-    with open("airports.csv", "r") as file:
-        for line in file:
-            code, name, city, country = line.strip().split(",")
-            if code.upper() == icao.upper():
-                return {
-                    "icao": code,
-                    "name": name,
-                    "city": city,
-                    "country": country
-                }
-    return None
+@app.route('/airport/<icao>')
+def airport_info(icao):
+    icao = icao.upper()
 
+    if icao in airports:
+        response = {
+            "icao": icao,
+            "name": airports[icao]["name"],
+            "city": airports[icao]["city"],
+            "country": airports[icao]["country"]
+        }
+        return json.dumps(response)
 
-# API endpoint
-@app.route("/airport/<icao>")
-def get_airport(icao):
-    airport = find_airport(icao)
-
-    if airport:
-        return jsonify(airport)
     else:
-        return jsonify({"error": "Airport not found"}), 404
+        error_response = {
+            "error": "Airport not found"
+        }
+        return json.dumps(error_response), 404
 
 
-# chạy server
-if __name__ == "__main__":
-    app.run(debug=True)
+if __name__ == '__main__':
+    app.run(use_reloader = True, host='127.0.0.1', port=5000)
