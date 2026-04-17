@@ -1,34 +1,32 @@
 import requests
 
+api_key = "223b1f5f2267dcdabd5648208b37707f"
+city = input("Enter municipality name: ")
 
-def get_weather():
-    city = input("Enter city: ")
-    api_key = "223b1f5f2267dcdabd5648208b37707f"
+geo_url = f"http://api.openweathermap.org/geo/1.0/direct?q={city}&limit=1&appid={api_key}"
+geo_response = requests.get(geo_url)
+geo_data = geo_response.json()
 
-    url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
+if geo_data:
+    lat = geo_data[0]["lat"]
+    lon = geo_data[0]["lon"]
 
-    try:
-        response = requests.get(url)
-        data = response.json()
+    weather_url = "https://api.openweathermap.org/data/2.5/weather"
+    params = {
+        "lat": lat,
+        "lon": lon,
+        "appid": api_key,
+        "units": "metric"
+    }
 
-        # kiểm tra lỗi từ API
-        if data.get("cod") != 200:
-            print("Error:", data.get("message"))
-            return
+    weather_response = requests.get(weather_url, params=params)
+    weather_data = weather_response.json()
 
-        # lấy dữ liệu
-        temp_kelvin = data["main"]["temp"]
-        description = data["weather"][0]["description"]
+    description = weather_data["weather"][0]["description"]
+    temperature = weather_data["main"]["temp"]
 
-        # chuyển Kelvin → Celsius
-        temp_celsius = temp_kelvin - 273.15
+    print("Weather:", description)
+    print("Temperature:", temperature, "°C")
 
-        # in kết quả
-        print("Weather:", description)
-        print("Temperature:", round(temp_celsius, 2), "°C")
-
-    except Exception as e:
-        print("Something went wrong:", e)
-
-
-get_weather()
+else:
+    print("City not found")
