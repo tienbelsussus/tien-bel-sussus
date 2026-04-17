@@ -1,0 +1,4 @@
+LFLL,Lyon Saint-Exupery Airport,Lyon,FR
+KJFK,John F Kennedy International Airport,New York,US
+EGLL,Heathrow Airport,London,GB
+VVTS,Tan Son Nhat International Airport,Ho Chi Minh City,VN

@@ -1,0 +1,6 @@
+mouse
+laptop
+pc
+keyboard
+ssd
+sdd
