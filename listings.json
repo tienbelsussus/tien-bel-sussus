@@ -1,0 +1,52 @@
+[
+    {
+        "prop_id": 201,
+        "address": "Ocean Park, Gia Lam",
+        "price": 3.1,
+        "sqm": 55,
+        "floor_level": 15,
+        "type": "apartment"
+    },
+    {
+        "prop_id": 202,
+        "address": "Masteri Thao Dien",
+        "price": 4.5,
+        "sqm": 70,
+        "floor_level": 20,
+        "type": "apartment"
+    },
+    {
+        "prop_id": 301,
+        "address": "Vinhomes Riverside",
+        "price": 35.0,
+        "sqm": 300,
+        "floor_level": 2,
+        "has_pool": true,
+        "type": "villa"
+    },
+    {
+        "prop_id": 302,
+        "address": "Phu My Hung Villa",
+        "price": 28.0,
+        "sqm": 250,
+        "floor_level": 3,
+        "has_pool": true,
+        "type": "villa"
+    },
+    {
+        "prop_id": 401,
+        "address": "Keangnam Landmark 72",
+        "price": 15.5,
+        "sqm": 250,
+        "has_private_elevator": true,
+        "type": "penthouse"
+    },
+    {
+        "prop_id": 402,
+        "address": "Bitexco Residence",
+        "price": 18.0,
+        "sqm": 280,
+        "has_private_elevator": false,
+        "type": "penthouse"
+    }
+]
