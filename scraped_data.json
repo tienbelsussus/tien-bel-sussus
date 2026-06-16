@@ -1,0 +1,20 @@
+[
+    {
+        "id": 5001,
+        "address": "Property 1",
+        "price": 5.5,
+        "sqm": 75
+    },
+    {
+        "id": 5002,
+        "address": "Property 2",
+        "price": 6.5,
+        "sqm": 85
+    },
+    {
+        "id": 5003,
+        "address": "Property 3",
+        "price": 7.5,
+        "sqm": 95
+    }
+]
